@@ -25,7 +25,7 @@ export default function Login() {
         if (returnedMessage === "Login Success"){
           console.log("login was ok")
           router.push("/")
-          console.log
+          console.log("router.push executed");
         } else{
           alert("Incorrect login information")
         }
