@@ -23,10 +23,7 @@ export default async function middleware(req: NextRequest) {
         // If a session cookie is found, check for validity
         try {
             if (sessionCookie){
-                console.log("found cookie")
-                console.log(`sessionCookie is ${sessionCookie}`)
                 const decryptedCookie = await decrypt(sessionCookie)
-                console.log(`sessionData is ${decryptedCookie?.expires}`)
                 // Check if the session has expired
                 if (new Date(decryptedCookie?.expires) < new Date()) {
                     console.log("expired redirecting")
