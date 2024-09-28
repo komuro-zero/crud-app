@@ -17,7 +17,6 @@ export default async function middleware(req: NextRequest) {
         // Bypass middleware for static files
     if (protectedRoutes.includes(path)){
         if (!sessionCookie) {
-            console.log("no session and no login")
             return NextResponse.redirect(httpsRedirectUrl);
         }
         // If a session cookie is found, check for validity
