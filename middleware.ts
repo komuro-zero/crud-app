@@ -14,7 +14,7 @@ export default async function middleware(req: NextRequest) {
     console.log(`inside middleware. session : ${sessionCookie}, ${path}`)
     
 
-        // Bypass middleware for static files
+    // Bypass middleware for static files
     if (protectedRoutes.includes(path)){
         if (!sessionCookie) {
             return NextResponse.redirect(httpsRedirectUrl);
