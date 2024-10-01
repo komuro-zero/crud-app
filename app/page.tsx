@@ -1,7 +1,7 @@
 import { Mali } from "next/font/google";
 import Head from "next/head";
 import { BiSolidUserPlus } from "react-icons/bi"
-import Table from "../components/table"
+import Table from "@/components/table"
 
 export default function Home() {
   return (
