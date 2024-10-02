@@ -4,7 +4,7 @@ import { MdOutlineTimer } from "react-icons/md";
 import confetti from "canvas-confetti";
 
 export default function Home() {
-    const buttonRef = useRef(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
     const scalar = 2;
     const unicorn = confetti.shapeFromText({ text: "🕑", scalar });
   
@@ -18,7 +18,7 @@ export default function Home() {
       scalar,
     };
   
-    const shoot = (e) => {
+    const shoot = () => {
       if (!buttonRef.current) return;
   
       // Get the position of the button
@@ -36,7 +36,6 @@ export default function Home() {
       confetti({
         ...defaults,
         particleCount: 1,
-        flat: true,
         origin: { x, y },
       });
   
