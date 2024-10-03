@@ -12,25 +12,25 @@ export default async function middleware(req: NextRequest) {
     const sessionCookie = cookies().get('session')?.value;
     const httpsRedirectUrl = `http://localhost:3000/login`;
     console.log(`inside middleware. session : ${sessionCookie}, ${path}`)
-    
+
 
     // Bypass middleware for static files
-    if (protectedRoutes.includes(path)){
+    if (protectedRoutes.includes(path)) {
         if (!sessionCookie) {
             return NextResponse.redirect(httpsRedirectUrl);
         }
         // If a session cookie is found, check for validity
         try {
-            if (sessionCookie){
+            if (sessionCookie) {
                 const decryptedCookie = await decrypt(sessionCookie)
                 // Check if the session has expired
                 if (new Date(decryptedCookie?.expires) < new Date()) {
                     console.log("expired redirecting")
                     return NextResponse.redirect(httpsRedirectUrl);
-                } else{
+                } else {
                     return NextResponse.next()
                 }
-            } else{
+            } else {
                 console.log("undefined cookie")
                 return NextResponse.redirect(httpsRedirectUrl)
             }
@@ -40,7 +40,7 @@ export default async function middleware(req: NextRequest) {
         }
     }
     // If no session cookie is found, or the route is protected, redirect to login
-    
+
     console.log("valid cookie")
     // If session is valid, proceed
     return NextResponse.next();
