@@ -14,13 +14,15 @@ datasource db {
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  email     String      @unique
-  password  String
-  name      String
-  position  String
-  validated Boolean     @default(false)
-  punchTime PunchTime[]
+  id          Int         @id @default(autoincrement())
+  email       String      @unique
+  password    String
+  name        String?
+  position    String?
+  verified    Boolean     @default(false)
+  verifyToken String
+  TokenTTL    DateTime
+  punchTime   PunchTime[]
 }
 
 model PunchTime {
