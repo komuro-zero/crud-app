@@ -1,12 +1,12 @@
-"use client"
-import { useRef } from "react";
-import { MdOutlineTimer } from "react-icons/md";
-import confetti from "canvas-confetti";
+'use client';
+import { useRef } from 'react';
+import { MdOutlineTimer } from 'react-icons/md';
+import confetti from 'canvas-confetti';
 
 export default function Home() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const scalar = 2;
-  const unicorn = confetti.shapeFromText({ text: "🕑", scalar });
+  const unicorn = confetti.shapeFromText({ text: '🕑', scalar });
 
   const defaults = {
     spread: 360,
@@ -43,7 +43,7 @@ export default function Home() {
       ...defaults,
       particleCount: 1,
       scalar: scalar / 2,
-      shapes: ["circle"],
+      shapes: ['circle'],
       origin: { x, y },
     });
 
@@ -56,10 +56,19 @@ export default function Home() {
   return (
     <main className="py-5">
       <div className="w-full max-w-xs flex justify-center flex-col m-auto h-screen">
-        <h1 className="text-xl md:text-5xl text-center font-bold py-10">打刻する</h1>
+        <h1 className="text-xl md:text-5xl text-center font-bold py-10">
+          打刻する
+        </h1>
         <div className="container mx-auto flex justify-center py-5 border-b">
-          <button ref={buttonRef} onClick={shoot} className="flex bg-inidgo-500 text-white px-4 py-2 border rounded-md hover:bg-gray-50 hover:border-indigo-500 hover:text-gray-800">
-            打刻する <span><MdOutlineTimer size={23}></MdOutlineTimer></span>
+          <button
+            ref={buttonRef}
+            onClick={shoot}
+            className="flex bg-inidgo-500 text-white px-4 py-2 border rounded-md hover:bg-gray-50 hover:border-indigo-500 hover:text-gray-800"
+          >
+            打刻する{' '}
+            <span>
+              <MdOutlineTimer size={23}></MdOutlineTimer>
+            </span>
           </button>
         </div>
       </div>

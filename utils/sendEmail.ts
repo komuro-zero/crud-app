@@ -1,20 +1,22 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import nodemailer, { Transporter } from 'nodemailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const sendEmail = async (
-  userEmail: String,
-  subject: String,
-  message: String
+  userEmail: string,
+  subject: string,
+  message: string
 ) => {
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      auth: {
-        user: process.env.SMTP_USER,
-        password: process.env.SMTP_PASSWORD,
-      },
-    });
+    const transporter: Transporter<SMTPTransport.Options> =
+      nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
+        },
+      });
 
     const mailOptions = {
       from: process.env.SMTP_FROM_MAIL,
@@ -22,8 +24,10 @@ const sendEmail = async (
       subject,
       text: message,
     };
-    await transporter.sendEmail(mailOptions);
+    const result = await transporter.sendMail(mailOptions);
+    console.log(result);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         message: `Something went wrong : ${error}`,

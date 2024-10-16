@@ -1,6 +1,6 @@
 // app/api/hello/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { encrypt, decrypt } from '@/lib/jwt'; // Import the shared encrypt function
+import {  }
 
 export async function POST(request: NextRequest) {
   const session = request.cookies.get('session')?.value;

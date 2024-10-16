@@ -7,7 +7,7 @@ export default async function middleware(req: NextRequest) {
   if (path.startsWith('/_next/') || path.startsWith('/static/')) {
     return NextResponse.next(); // Skip middleware for static files
   }
-  const protectedRoutes = ['/'];
+  const protectedRoutes = ['/', '/punch'];
   const sessionCookie = cookies().get('session')?.value;
   const httpsRedirectUrl = `http://localhost:3000/login`;
   console.log(`inside middleware. session : ${sessionCookie}, ${path}`);

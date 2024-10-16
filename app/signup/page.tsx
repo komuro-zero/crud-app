@@ -20,17 +20,19 @@ export default function Login() {
         },
         body: JSON.stringify({ username: username, password: password }),
       });
-      if (!loginResponse.ok) {
-        alert('Error when logging in. Try again another time');
-      }
       const waitedResponse = await loginResponse?.json();
       const returnedMessage = waitedResponse?.message;
+
+      if (!loginResponse.ok) {
+        alert(`Error when signing up : ${returnedMessage}`);
+        return;
+      }
       if (returnedMessage === 'Login Success') {
         console.log('signup was ok');
         router.push('/');
         console.log('router.push executed');
       } else {
-        alert('Signup failed');
+        alert(`Signup failed ${returnedMessage}`);
       }
     }
   };
