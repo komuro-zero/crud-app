@@ -1,7 +1,5 @@
 // app/api/hello/route.ts
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { encrypt } from '@/lib/jwt'; // Import the shared encrypt function
 import { hashPassword } from '@/utils/hashPassword';
 import crypto from 'crypto';
 import prisma from '@/utils/db';
