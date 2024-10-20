@@ -1,4 +1,17 @@
-export default function Table() {
+interface User {
+  name: string;
+  email: string;
+  salary: number;
+  birthday: string;
+  status: string;
+  imageUrl: string;
+}
+
+interface TableProps {
+  users: User[];
+}
+
+export default function Table({ users }: TableProps) {
   return (
     <table className="min-w-full table-auto">
       <thead>
@@ -24,27 +37,35 @@ export default function Table() {
         </tr>
       </thead>
       <tbody className="bg-gray-400">
-        <tr className="bg-gray-400 text-center">
-          <td className="px-16 py-2 flex flex-row item-center">
-            <img src="#" alt=""></img>
-            <span className="text-center ml-2 font-semibold">Sample Name</span>
-          </td>
-          <td className="px-16 py-2">
-            <span>sample@email.com</span>
-          </td>
-          <td className="px-16 py-2">
-            <span>1000</span>
-          </td>
-          <td className="px-16 py-2">
-            <span>1999/1/1</span>
-          </td>
-          <td className="px-16 py-2">
-            <span>LIve</span>
-          </td>
-          <td className="px-16 py-2">
-            <span>delete</span>
-          </td>
-        </tr>
+        {users.map((user, index) => (
+          <tr key={index} className="bg-gray-400 text-center">
+            <td className="px-16 py-2 flex flex-row items-center">
+              <img
+                src={user.imageUrl}
+                alt="profile"
+                className="w-10 h-10 rounded-full"
+              />
+              <span className="text-center ml-2 font-semibold">
+                {user.name}
+              </span>
+            </td>
+            <td className="px-16 py-2">
+              <span>{user.email}</span>
+            </td>
+            <td className="px-16 py-2">
+              <span>{user.salary}</span>
+            </td>
+            <td className="px-16 py-2">
+              <span>{user.birthday}</span>
+            </td>
+            <td className="px-16 py-2">
+              <span>{user.status}</span>
+            </td>
+            <td className="px-16 py-2">
+              <button className="text-red-500">Delete</button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

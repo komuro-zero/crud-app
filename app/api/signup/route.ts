@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       }
 
       console.log(`creating verification link`);
-      const verificationLink = `${process.env.BASE_URL}/verify_email?verification_token=${verificationToken}&userId=${newUser.id}`;
+      const verificationLink = `${process.env.BASE_URL}/verify_email?verification_token=${verifyToken}&userId=${newUser.id}`;
       console.log(`verification link created : ${verificationLink}`);
       await sendEmail(
         newUser?.email,

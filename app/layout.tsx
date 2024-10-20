@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { IoIosTimer } from 'react-icons/io';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,8 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="py-5 bg-gray-800">
-          <div className="px-5">header</div>
+        <header className=" bg-gray-800">
+          <div className="container mx-auto flex py-5">
+            <a href="/">
+              <span className="flex items-center space-x-2">
+                <span>Dakoku App</span>
+                <IoIosTimer size={23} />
+              </span>
+            </a>
+          </div>
         </header>
         {children}
       </body>

@@ -2,8 +2,10 @@
 import { useRef } from 'react';
 import { MdOutlineTimer } from 'react-icons/md';
 import confetti from 'canvas-confetti';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const scalar = 2;
   const unicorn = confetti.shapeFromText({ text: '🕑', scalar });
@@ -18,7 +20,7 @@ export default function Home() {
     scalar,
   };
 
-  const shoot = () => {
+  const shoot = async () => {
     if (!buttonRef.current) return;
 
     // Get the position of the button
@@ -47,10 +49,18 @@ export default function Home() {
       origin: { x, y },
     });
 
-    // Shooting confetti in intervals
-    // setTimeout(shoot, 0);
-    // setTimeout(shoot, 100);
-    // setTimeout(shoot, 200);
+    const punch = await fetch('/api/punch', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log(`punch response : ${punch.status}`);
+    setTimeout(() => {
+      alert('punched card');
+      router.push('/');
+    }, 500);
   };
 
   return (

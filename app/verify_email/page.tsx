@@ -26,9 +26,11 @@ export default function VerifyEmail({ result }: { result: string }) {
       const result = json?.message;
 
       if (result === 'success') {
+        alert('User successfully verified! Redirecting to Login Page');
         router.push('/login');
       } else {
         alert(`Error verifying : ${result}`);
+        router.push('/signup');
       }
     };
     fetchData();
