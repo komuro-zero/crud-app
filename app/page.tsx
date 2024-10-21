@@ -29,7 +29,6 @@ export default function Home() {
 
       if (result === 'success') {
         setPunchTime(json.data);
-        alert('User successfully verified! Redirecting to Login Page');
       } else {
         alert(`Error verifying : ${result}`);
       }
