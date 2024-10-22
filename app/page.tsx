@@ -14,7 +14,6 @@ export default function Home() {
   const goToPunch = async () => {
     router.push('/punch');
   };
-  let data = [];
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch('/api/getPunchtime', {
