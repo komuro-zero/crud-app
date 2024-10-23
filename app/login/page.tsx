@@ -86,6 +86,12 @@ export default function Login() {
           </button>
         </div>
       </form>
+      <div className="justify-content text-center">
+        Don`t have an account?<br></br>
+        <a href="/signup" className="underline">
+          Sign Up
+        </a>
+      </div>
     </div>
   );
 }

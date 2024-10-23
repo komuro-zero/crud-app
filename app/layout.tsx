@@ -23,6 +23,10 @@ export default function RootLayout({
     });
     router.refresh();
   };
+
+  const signup = async () => {
+    router.push('/signup');
+  };
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -44,14 +48,7 @@ export default function RootLayout({
                 </span>
               </button>
             ) : (
-              <button
-                className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                onClick={logout}
-              >
-                <span className="flex items-center space-x-2">
-                  <span>Signup</span>
-                </span>
-              </button>
+              <span></span>
             )}
           </div>
         </header>
