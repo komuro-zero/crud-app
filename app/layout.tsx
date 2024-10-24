@@ -24,9 +24,6 @@ export default function RootLayout({
     router.refresh();
   };
 
-  const signup = async () => {
-    router.push('/signup');
-  };
   return (
     <html lang="en">
       <body className={inter.className}>
